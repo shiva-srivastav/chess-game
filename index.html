@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <div class="captured" id="capturedBlack"></div>
+        <div id="chessboard"></div>
+        <div class="captured" id="capturedWhite"></div>
+        <div class="game-info">
+            <div class="status" id="status">White's turn</div>
+            <div class="move-history" id="moveHistory"></div>
+        </div>
+        <div id="promotionModal" class="promotion-modal"></div>
+        <div id="gameOverModal" class="game-over-modal">
+            <h2 id="gameOverMessage"></h2>
+            <button class="restart-button" onclick="location.reload()">New Game</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
