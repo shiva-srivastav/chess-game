@@ -1,1 +1,301 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #151922;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
 
+#gameContainer {
+    text-align: center;
+}
+
+#chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 20px auto;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.white {
+    background-color: #2A2F42;
+}
+
+.black {
+    background-color: #1B1E2B;
+}
+
+.selected {
+    background-color: rgba(108, 117, 245, 0.25) !important;
+}
+
+.valid-move {
+    background-color: rgba(195, 200, 255, 0.08) !important;
+}
+
+.check {
+    background-color: rgba(255, 95, 95, 0.2) !important;
+}
+
+.last-move {
+    background-color: rgba(195, 200, 255, 0.05) !important;
+}
+
+.notation {
+    position: absolute;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 500;
+}
+
+.file-notation {
+    bottom: 2px;
+    right: 2px;
+}
+
+.rank-notation {
+    top: 2px;
+    left: 2px;
+}
+
+.piece {
+    font-size: 45px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.15s ease;
+}
+
+.piece:hover {
+    transform: scale(1.1);
+}
+
+.white-piece {
+    color: #e8edf5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.black-piece {
+    color: #3d4356;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.status {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 18px;
+    color: #a4b0c5;
+}
+
+.captured {
+    margin-top: 10px;
+    font-size: 24px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+}
+
+.move-history {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    color: #a4b0c5;
+}
+
+#gameContainer {
+    text-align: center;
+}
+
+#chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px auto;
+    position: relative;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.white {
+    background-color: #2A2F42;
+}
+
+.black {
+    background-color: #1B1E2B;
+}
+
+.selected {
+    background-color: rgba(123, 97, 255, 0.3) !important;
+}
+
+.valid-move {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.check {
+    background-color: rgba(255, 59, 59, 0.3) !important;
+}
+
+.last-move {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.notation {
+    position: absolute;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.file-notation {
+    bottom: 2px;
+    right: 2px;
+}
+
+.rank-notation {
+    top: 2px;
+    left: 2px;
+}
+
+.status {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.captured {
+    margin-top: 10px;
+    font-size: 24px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.piece {
+    font-size: 45px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.white-piece {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.black-piece {
+    color: #666;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.promotion-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(27, 30, 43, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.promotion-piece {
+    font-size: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.promotion-piece:hover {
+    transform: scale(1.2);
+}
+
+.game-over-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(27, 30, 43, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.move-history {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.restart-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: rgba(123, 97, 255, 0.3);
+    border: 1px solid rgba(123, 97, 255, 0.5);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.restart-button:hover {
+    background: rgba(123, 97, 255, 0.5);
+}
